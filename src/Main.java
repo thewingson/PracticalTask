@@ -6,6 +6,7 @@ public class Main {
     private static Scanner in = new Scanner(System.in);
 
     private static int[] squareArray;
+    private static CustomGenericArray<SquareNumber> squareNumberArray;
 
     public static void main(String[] args) {
         initFields();
@@ -17,7 +18,8 @@ public class Main {
             if (desiredNum < 1 || desiredNum > 100) {
                 throw new IllegalStateException(CommonMessages.NUMBER_OUT_OF_RANGE);
             }
-            printNumbers(desiredNum);
+//            printNumbers(desiredNum);
+            copyNumbers();
         } catch (InputMismatchException e){
             throw new IllegalArgumentException(CommonMessages.ILLEGAL_TYPE_OF_INPUT);
         }
@@ -53,6 +55,19 @@ public class Main {
     private static void printNumbers(Integer rangeStart, Integer rangeEnd) {
         for (int i = rangeStart - 1; i < rangeEnd; i++) {
             System.out.printf("(%d)^2 = %d%n", i + 1, squareArray[i]);
+        }
+    }
+
+
+    private static void copyNumbers() {
+        squareNumberArray = new CustomGenericArray<>(SquareNumber.class, squareArray.length);
+        for (int i = 0; i < squareArray.length; i++) {
+            SquareNumber squareNumber = new SquareNumber(i+1, squareArray[i]);
+            squareNumberArray.add(squareNumber);
+        }
+
+        for (int i = 0; i < squareNumberArray.getSize(); i++) {
+            System.out.println(squareNumberArray.get(i));
         }
     }
 }
