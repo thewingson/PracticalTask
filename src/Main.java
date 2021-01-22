@@ -22,7 +22,7 @@ public class Main {
             }
 //            printNumbers(desiredNum);
             copyNumbers();
-            textFileWriter = new TextFileWriter();
+            textFileWriter = TextFileWriter.getInstance();
             textFileWriter.write(squareNumberArray);
             textFileWriter.close();
         } catch (InputMismatchException e){
@@ -32,6 +32,7 @@ public class Main {
         } catch (IOException e) {
             throw new IllegalStateException(CommonMessages.FILE_IS_UNACCESSIBLE);
         }
+
     }
 
     /**
