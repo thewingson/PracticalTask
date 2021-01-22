@@ -10,8 +10,12 @@ public class CustomGenericArray<T extends SquareNumber> {
         this.objectArray = a;
     }
 
+    public T[] getAll() {
+        return this.objectArray;
+    }
+
     public T get(int i) {
-        return objectArray[i];
+        return this.objectArray[i];
     }
 
     public void add(T element) {
