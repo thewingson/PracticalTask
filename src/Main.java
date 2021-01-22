@@ -1,12 +1,14 @@
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
 
     private static Scanner in = new Scanner(System.in);
-
     private static int[] squareArray;
     private static CustomGenericArray<SquareNumber> squareNumberArray;
+    private static TextFileWriter textFileWriter;
 
     public static void main(String[] args) {
         initFields();
@@ -20,8 +22,15 @@ public class Main {
             }
 //            printNumbers(desiredNum);
             copyNumbers();
+            textFileWriter = new TextFileWriter();
+            textFileWriter.write(squareNumberArray);
+            textFileWriter.close();
         } catch (InputMismatchException e){
             throw new IllegalArgumentException(CommonMessages.ILLEGAL_TYPE_OF_INPUT);
+        } catch (FileNotFoundException e) {
+            throw new IllegalArgumentException(CommonMessages.UNABLE_TO_OPEN_FILE);
+        } catch (IOException e) {
+            throw new IllegalStateException(CommonMessages.FILE_IS_UNACCESSIBLE);
         }
     }
 
