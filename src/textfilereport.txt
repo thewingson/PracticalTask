@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<squareNumber>
+    <number>100</number>
+    <square>10000</square>
+    <isEven>true</isEven>
+</squareNumber>

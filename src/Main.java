@@ -9,22 +9,26 @@ public class Main {
     private static int[] squareArray;
     private static CustomGenericArray<SquareNumber> squareNumberArray;
     private static TextFileWriter textFileWriter;
+    private static XmlFileWriter xmlFileWriter;
 
     public static void main(String[] args) {
         initFields();
 
-        System.out.println("Please, enter desired number between 1 and 100:");
+//        System.out.println("Please, enter desired number between 1 and 100:");
         int desiredNum;
         try {
-            desiredNum = in.nextInt();
-            if (desiredNum < 1 || desiredNum > 100) {
-                throw new IllegalStateException(CommonMessages.NUMBER_OUT_OF_RANGE);
-            }
+//            desiredNum = in.nextInt();
+//            if (desiredNum < 1 || desiredNum > 100) {
+//                throw new IllegalStateException(CommonMessages.NUMBER_OUT_OF_RANGE);
+//            }
 //            printNumbers(desiredNum);
             copyNumbers();
-            textFileWriter = TextFileWriter.getInstance();
-            textFileWriter.write(squareNumberArray);
-            textFileWriter.close();
+//            textFileWriter = TextFileWriter.getInstance();
+//            textFileWriter.write(squareNumberArray);
+//            textFileWriter.close();
+
+            xmlFileWriter = new XmlFileWriter();
+            xmlFileWriter.write(squareNumberArray);
         } catch (InputMismatchException e){
             throw new IllegalArgumentException(CommonMessages.ILLEGAL_TYPE_OF_INPUT);
         } catch (FileNotFoundException e) {
