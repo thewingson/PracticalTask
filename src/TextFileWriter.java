@@ -3,11 +3,26 @@ import java.io.IOException;
 
 public class TextFileWriter extends AbstractFileWriter {
 
-    public TextFileWriter() throws FileNotFoundException {
+    private static volatile TextFileWriter INSTANCE;
+
+    private TextFileWriter() throws FileNotFoundException {
         super();
     }
 
-    public void write(CustomGenericArray<?> genericArray) throws RuntimeException {
+    public static TextFileWriter getInstance() throws FileNotFoundException {
+        TextFileWriter result = INSTANCE;
+        if (result != null) {
+            return result;
+        }
+        synchronized(TextFileWriter.class) {
+            if (INSTANCE == null) {
+                INSTANCE = new TextFileWriter();
+            }
+            return INSTANCE;
+        }
+    }
+
+    public synchronized void write(CustomGenericArray<?> genericArray) throws RuntimeException {
         for (SquareNumber squareNumber : genericArray.getAll()) {
             String tempString = squareNumber.toString() + System.lineSeparator();
             try {
