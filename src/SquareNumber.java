@@ -44,4 +44,13 @@ public class SquareNumber {
     private void checkForEven() {
         this.isEven = this.square % 2 == 0;
     }
+
+    @Override
+    public String toString() {
+        return "SquareNumber{" +
+                "number=" + number +
+                ", square=" + square +
+                ", isEven=" + isEven +
+                '}';
+    }
 }
